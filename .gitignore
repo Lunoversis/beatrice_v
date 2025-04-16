@@ -2,3 +2,5 @@
 *.ppu
 *.o
 *.obj
+*.dll
+*.so

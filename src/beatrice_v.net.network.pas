@@ -22,7 +22,7 @@ type
     function
     GetLayer(i: integer):   TNeuronLayer;
 
-    destructor Destroy; override;
+    destructor Destroy;
   end;
 
 implementation
