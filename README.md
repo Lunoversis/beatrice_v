@@ -22,7 +22,7 @@ Then, clone the repository and compile the project:
 
 ```sh
 $ git clone https://github.com/LunoversisRobotics/beatrice_v.git
-$ cd beatrice_v-main
+$ cd beatrice_v
 $ fpc ./src/beatrice_v.pas
 ```
 
