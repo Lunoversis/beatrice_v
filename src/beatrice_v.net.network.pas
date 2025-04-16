@@ -20,7 +20,7 @@ type
       But we are trying to access an array. 
                                     - Jari         }
     function
-    GetLayer(i: integer):   TNeuronLayer;
+    GetLayer(i: integer):   TNeuronLayer; stdcall;
 
     destructor Destroy;
   end;
@@ -44,7 +44,7 @@ begin
 end;
 
 function
-TNeuralNet.GetLayer(i: integer):   TNeuronLayer;
+TNeuralNet.GetLayer(i: integer):   TNeuronLayer; stdcall;
 begin
     Result := mLayer[i];
 end;

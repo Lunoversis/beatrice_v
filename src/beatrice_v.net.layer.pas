@@ -33,8 +33,8 @@ type
         { Constructors }
         constructor New;
 
-        procedure AppendNeuron(y: TNeuron);
-        procedure AppendLayer(y: Char);
+        procedure AppendNeuron(y: TNeuron); stdcall;
+        procedure AppendLayer(y: Char);     stdcall;
         
         { Destructor }
         destructor Destroy; override;
@@ -51,7 +51,7 @@ begin
     SetLength(cOLinks, 0);
 end;
 
-procedure TNeuronLayer.AppendLayer(y: Char);
+procedure TNeuronLayer.AppendLayer(y: Char); stdcall;
 begin
     Inc(lOutput);
     SetLength(cOLinks, lOutput);
@@ -60,7 +60,7 @@ begin
     WriteLn('Appending Layer! ', cOLinks[lOutput - 1]);
 end;
 
-procedure TNeuronLayer.AppendNeuron(y: TNeuron);
+procedure TNeuronLayer.AppendNeuron(y: TNeuron); stdcall;
 begin
     Inc(iNeurons);
     SetLength(mNeurons, iNeurons);

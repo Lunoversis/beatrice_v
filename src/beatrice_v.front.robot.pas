@@ -30,11 +30,11 @@ type
 
     { Methods }
     procedure
-    OnCreate();   override;
+    OnCreate();   override;  stdcall;
     procedure
-    OnStep();     override;
+    OnStep();     override;  stdcall;
     procedure
-    OnDestroy();  override;
+    OnDestroy();  override;  stdcall;
 
     { Destructor }
     destructor
@@ -46,7 +46,7 @@ type
   RobotPrototype( sAngle:     single;
                   s_dPath:    single;
                   s_dSpeed:   single;
-                  vPos:       TVec2i): TRobotPrototype;
+                  vPos:       TVec2i): TRobotPrototype; stdcall;
 
 implementation
 
@@ -59,15 +59,15 @@ begin
 end;
 
 procedure 
-TRobot.OnCreate();
+TRobot.OnCreate();  stdcall;
 begin end;
 
 procedure 
-TRobot.OnStep();
+TRobot.OnStep();    stdcall;
 begin end;
 
 procedure 
-TRobot.OnDestroy();
+TRobot.OnDestroy(); stdcall;
 begin end;
 
 destructor 
@@ -80,7 +80,7 @@ function
 RobotPrototype( sAngle:     single;
                 s_dPath:    single;
                 s_dSpeed:   single;
-                vPos:       TVec2i): TRobotPrototype;
+                vPos:       TVec2i): TRobotPrototype; stdcall;
 var
   x: TRobotPrototype;
 begin

@@ -17,14 +17,14 @@ type
     function
     Neuron( sBias:      ShortInt; 
             sWeight:    Single;
-            sInput:     Single):        TNeuron; export;
+            sInput:     Single):        TNeuron;    stdcall; export;
 
 implementation
 
 function
 Neuron( sBias:      ShortInt;
         sWeight:    Single; 
-        sInput:     Single): TNeuron; export;
+        sInput:     Single): TNeuron;   stdcall; export;
 var
     x: TNeuron;
 begin
