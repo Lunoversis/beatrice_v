@@ -4,12 +4,23 @@ interface
 
 {$mode Delphi}
 
+uses
+  beatrice_v.engine.body;
+
 type
-  TEngine_Sensor = class
+  TEngine_Sensor = class(TEngine_Body)
   private
     dwInput:   DWord;
     dwOutput:  DWord;
   public
+    { Standard Methods }
+    procedure
+    OnCreate();   virtual;  stdcall;
+    procedure
+    OnStep();     virtual;  stdcall;
+    procedure
+    OnDestroy();  virtual;  stdcall;
+
     { Properties }
     property
     Input: DWord
@@ -21,5 +32,19 @@ type
       read  dwOutput 
       write dwOutput;
   end;
+
 implementation
+
+procedure 
+TEngine_Sensor.OnCreate();  stdcall;
+begin end;
+
+procedure 
+TEngine_Sensor.OnStep();    stdcall;
+begin end;
+
+procedure 
+TEngine_Sensor.OnDestroy(); stdcall;
+begin end;
+
 end.

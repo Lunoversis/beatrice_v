@@ -7,7 +7,7 @@ interface
 uses
   classes,
   Generics.Collections,
-  beatrice_v.math.vec2,
+  beatrice_v.math.vec2i,
   beatrice_v.engine.sensor,
   beatrice_v.engine.body;
 
