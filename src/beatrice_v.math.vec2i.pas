@@ -1,4 +1,4 @@
-unit beatrice_v.math.vec2;
+unit beatrice_v.math.vec2i;
 
 interface
 
