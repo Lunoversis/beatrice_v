@@ -5,10 +5,11 @@ Beatrice V
 
 It is designed to run in low-spec CPUs, such as ARM-based Microcontrollers. To achieve this goal, **Beatrice V** is written using an over-engineered ideology.
 
+> DISCLAIMER: Work In Progress.
+
 **GEAR YOUR WORKS**
 
 
-> DISCLAIMER: Work In Progress.
 
 
 Usage
