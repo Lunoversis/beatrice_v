@@ -6,13 +6,16 @@ uses
   beatrice_v.net.network,
   beatrice_v.front.robot,
   beatrice_v.engine.body,
+  beatrice_v.math.rand,
   beatrice_v.engine.sensor;
 
 var
   robot:  TRobot;
   net:    TNeuralNet;
 begin
-  writeln('Ola mundo');
+  writeln(Beatrice_Rand(700));
+  writeln(Beatrice_Rand(2112));
+  writeln(Beatrice_Rand(3004));
   net := TNeuralNet.New();
   robot := TRobot.New();
   robot.Destroy();

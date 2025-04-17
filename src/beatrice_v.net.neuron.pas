@@ -5,7 +5,8 @@ unit beatrice_v.net.neuron;
 interface
 
 uses
-  Classes;
+  Classes,
+  beatrice_v.math.rand;
 
 type
   TSingleArray  = array of Single;
@@ -68,7 +69,7 @@ var
   i: integer;
 begin
   for i := 0 to w do begin
-    m_lWeights[i] := random(21);
+    m_lWeights[i] := Beatrice_Rand(700);
   end;
 end;
 
