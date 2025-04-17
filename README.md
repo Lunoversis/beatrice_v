@@ -34,13 +34,13 @@ Progress
 --------
 
 - [x]   Basic modular back-end architecture.
-- []    Full optimized mathematics module.
-- []    Ev3Dev support.
-- []    Working artificial neural network.
-- []    Functional-Programming support
-- []    Aurora V support.
-- []    ROS support
-- []    Platform-specific optimizations.
+- [ ]    Full optimized mathematics module.
+- [ ]    Ev3Dev support.
+- [ ]    Working artificial neural network.
+- [ ]    Functional-Programming support
+- [ ]    Aurora V support.
+- [ ]    ROS support
+- [ ]    Platform-specific optimizations.
 
 
 License
