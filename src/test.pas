@@ -1,6 +1,7 @@
 program test;
 
 uses
+  beatrice_v.robot,
   beatrice_v.net.layer,
   beatrice_v.net.neuron,
   beatrice_v.net.network,
@@ -10,14 +11,14 @@ uses
   beatrice_v.back.sensor;
 
 var
-  robot:  TRobot;
+  robot:  TBeatriceRobot;
   net:    TNeuralNet;
 begin
   writeln(Beatrice_Rand(700));
   writeln(Beatrice_Rand(2112));
   writeln(Beatrice_Rand(3004));
   net := TNeuralNet.New();
-  robot := TRobot.New();
+  robot := TBeatriceRobot.New();
   robot.Destroy();
   net.Destroy();
 end.

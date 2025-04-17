@@ -13,20 +13,26 @@ uses
 
 type
   TRobotPrototype = record
-    sAngle:     single;
-    s_dPath:    single; { Delta S }
-    s_dSpeed:   single; { Delta V }
-    vPos:       TVec2i;
+    m_sAngle: single;
+    m_sPath:  single; { Delta S }
+    m_sSpeed: single; { Delta V }
+    m_v2Pos:  TVec2i; { Current Position }
   end;
 
   TRobot = class(TEngine_Body)
   private
-    sList:  TList<TEngine_Sensor>;
-    Proto:  TRobotPrototype;
+    m_lSensor:  TList<TEngine_Sensor>;
+    m_pProto:   TRobotPrototype;
+
+    procedure
+    Init(proto: TRobotPrototype);
+
   public
     { Constructor }
     constructor
-    New();        overload;
+    New();                    overload;
+    constructor
+    New(proto: TRobotPrototype);  overload;
 
     { Methods }
     procedure
@@ -43,19 +49,35 @@ type
 
   { Prototype Generator }
   function
-  RobotPrototype( sAngle:     single;
-                  s_dPath:    single;
-                  s_dSpeed:   single;
-                  vPos:       TVec2i): TRobotPrototype; stdcall;
+  RobotPrototype( m_sAngle: single;
+                  m_sPath:  single;
+                  m_sSpeed: single;
+                  m_v2Pos:  TVec2i): TRobotPrototype; stdcall;
 
 implementation
+
+procedure
+TRobot.Init(proto: TRobotPrototype);
+begin
+  m_lSensor := TList<TEngine_Sensor>.Create;
+  m_pProto  := proto;
+  writeln('Created Robot! :: a',  m_pProto.m_sAngle,
+          '| p',                  m_pProto.m_sPath,
+          '| spd',                m_pProto.m_sSpeed,
+          '| pos x',              m_pProto.m_v2Pos.X, 
+          '| pos y',              m_pProto.m_v2Pos.Y);
+end;
+
+constructor
+TRobot.New(proto: TRobotPrototype);
+begin
+  Init(proto);
+end;
 
 constructor 
 TRobot.New();
 begin
-  sList := TList<TEngine_Sensor>.Create;
-  Proto := RobotPrototype(0, 0, 0, TVec2i.New());
-  writeln('Created Robot!');
+  Init(RobotPrototype(0, 0, 0, TVec2i.New()));
 end;
 
 procedure 
@@ -73,22 +95,24 @@ begin end;
 destructor 
 TRobot.Destroy();
 begin
+  m_lSensor.Free();
   writeln('Destroyed Robot!');
 end;
 
 function
-RobotPrototype( sAngle:     single;
-                s_dPath:    single;
-                s_dSpeed:   single;
-                vPos:       TVec2i): TRobotPrototype; stdcall;
+RobotPrototype( m_sAngle: single;
+                m_sPath:  single;
+                m_sSpeed: single;
+                m_v2Pos:  TVec2i): TRobotPrototype; stdcall;
 var
   x: TRobotPrototype;
 begin
-  x.sAngle      := sAngle;
-  x.s_dPath     := s_dPath;
-  x.s_dSpeed    := s_dPath;
-  x.vPos        := vPos;
-  Result        := x;
+  x.m_sAngle  := m_sAngle;
+  x.m_sPath   := m_sPath;
+  x.m_sSpeed  := m_sSpeed;
+  x.m_v2Pos   := m_v2Pos;
+
+  Result      := x;
 end;
 
 end.
