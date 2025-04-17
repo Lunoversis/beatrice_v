@@ -1,11 +1,11 @@
-unit beatrice_v.engine.sensor;
+unit beatrice_v.back.sensor;
 
 interface
 
 {$mode Delphi}
 
 uses
-  beatrice_v.engine.body;
+  beatrice_v.back.body;
 
 type
   TEngine_Sensor = class(TEngine_Body)

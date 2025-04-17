@@ -5,9 +5,9 @@ uses
   beatrice_v.net.neuron,
   beatrice_v.net.network,
   beatrice_v.front.robot,
-  beatrice_v.engine.body,
+  beatrice_v.back.body,
   beatrice_v.math.rand,
-  beatrice_v.engine.sensor;
+  beatrice_v.back.sensor;
 
 var
   robot:  TRobot;

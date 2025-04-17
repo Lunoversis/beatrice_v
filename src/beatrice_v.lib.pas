@@ -16,8 +16,8 @@ uses
   beatrice_v.net.neuron,
   beatrice_v.net.network,
   beatrice_v.front.robot,
-  beatrice_v.engine.body,
-  beatrice_v.engine.sensor,
+  beatrice_v.back.body,
+  beatrice_v.back.sensor,
 {$endif} { BEATRICE_V_DYNAMIC }
   sysutils;
 

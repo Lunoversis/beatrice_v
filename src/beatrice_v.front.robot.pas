@@ -6,10 +6,10 @@ interface
 
 uses
   classes,
+  beatrice_v.back.body,
   Generics.Collections,
   beatrice_v.math.vec2i,
-  beatrice_v.engine.sensor,
-  beatrice_v.engine.body;
+  beatrice_v.back.sensor;
 
 type
   TRobotPrototype = record
