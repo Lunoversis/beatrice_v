@@ -5,79 +5,61 @@ unit beatrice_v.net.layer;
 interface
 
 uses
-    beatrice_v.net.neuron;
+  beatrice_v.net.neuron;
 
 type
-    { Pointer Definition }
-    TNeuronLayerPtr = ^TNeuronLayer;
+  TNeuronLayer = class
+  private
+    m_iNeurons: integer;      { Neuron List Length }
+    m_lNeurons: TNeuronArray; { Neuron List }
 
-    { Class Definition }
-    TNeuronLayer = class
-    private
-        { Layer ID }
-        cID: Char;
+    { Initializing Function }
+    procedure
+    InitNeurons(neurons:    integer;
+                weights:    integer);
+  public
+    { +-------------+ }
+    { | Constructor | }
+    { +-------------+ }
+    constructor
+    New(neurons:  integer;
+        weights:  integer); overload;
 
-        { I/O Links }
-        cILinks: array of Char;
-        cOLinks: array of Char;
+    { +------------+ }
+    { | Properties | }
+    { +------------+ }
+    property
+    Neurons: TNeuronArray
+      read m_lNeurons;
+  end;
 
-        { Neuron Matrix Size }
-        iNeurons: SmallInt;
-
-        { Output Links Array Length }
-        lOutput: SmallInt;
-
-        { Neuron Matrix }
-        mNeurons: array of TNeuron;
-    public
-        { Constructors }
-        constructor New;
-
-        procedure AppendNeuron(y: TNeuron); stdcall;
-        procedure AppendLayer(y: Char);     stdcall;
-        
-        { Destructor }
-        destructor Destroy; override;
-    end;
+  { Defining an Array type }
+  TNeuronLayerArray = array of TNeuronLayer;
 
 implementation
 
-constructor TNeuronLayer.New;
+constructor
+TNeuronLayer.New( neurons:  integer;
+                  weights:  integer);
 begin
-    iNeurons := 0;
-    lOutput := 0;
-    SetLength(mNeurons, 0);  // Initialize as empty array
-    SetLength(cILinks, 0);
-    SetLength(cOLinks, 0);
+  InitNeurons(neurons, weights);
 end;
 
-procedure TNeuronLayer.AppendLayer(y: Char); stdcall;
+procedure
+TNeuronLayer.InitNeurons( neurons:  integer;
+                          weights:  integer);
+var
+  i: integer;
 begin
-    Inc(lOutput);
-    SetLength(cOLinks, lOutput);
-    cOLinks[lOutput - 1] := y;
+  { Define Obj Size as arg }
+  m_iNeurons := neurons;
 
-    WriteLn('Appending Layer! ', cOLinks[lOutput - 1]);
-end;
+  { Dynamic alloc }
+  SetLength(m_lNeurons, m_iNeurons);
 
-procedure TNeuronLayer.AppendNeuron(y: TNeuron); stdcall;
-begin
-    Inc(iNeurons);
-    SetLength(mNeurons, iNeurons);
-    mNeurons[iNeurons - 1] := y;
-
-    WriteLn('Appending! b', mNeurons[iNeurons - 1].sBias,
-            ' w',           mNeurons[iNeurons - 1].sWeight,
-            ' i',           mNeurons[iNeurons - 1].sInput,
-            ' o',           mNeurons[iNeurons - 1].sOutput);
-end;
-
-destructor TNeuronLayer.Destroy;
-begin
-    Finalize(mNeurons);
-    Finalize(cILinks);
-    Finalize(cOLinks);
-    inherited Destroy;
+  for i := 0 to m_iNeurons do begin
+    m_lNeurons[i] := TNeuron.New(weights);
+  end;
 end;
 
 end.

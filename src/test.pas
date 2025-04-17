@@ -13,7 +13,7 @@ var
   net:    TNeuralNet;
 begin
   writeln('Ola mundo');
-  net := TNeuralNet.New(3);
+  net := TNeuralNet.New();
   robot := TRobot.New();
   robot.Destroy();
   net.Destroy();
