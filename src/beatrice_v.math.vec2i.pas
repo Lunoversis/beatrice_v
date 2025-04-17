@@ -6,24 +6,18 @@ interface
 
 type
   TVec2i = class
-  private
-    iX: integer;
-    iY: integer;
   public
+    { Variables }
+    X: integer;
+    Y: integer; 
+
     { Constructors }
     constructor
     New();            overload;
     constructor
-    New(x:  integer;
-        y:  integer); overload;
+    New(ix:  integer;
+        iy:  integer); overload;
 
-    { Properties }
-    property
-    X: integer
-      read iX write iX;
-    property
-    Y: integer
-      read iY write iY;    
   end;
 
 implementation
@@ -31,16 +25,16 @@ implementation
 constructor
 TVec2i.New();
 begin
-  iX := 0;
-  iY := 0;
+  X := 0;
+  Y := 0;
 end;
 
 constructor
-TVec2i.New( x:  integer;
-            y:  integer);
+TVec2i.New( ix:  integer;
+            iy:  integer);
 begin
-  iX := x;
-  iY := y;
+  X := x;
+  Y := y;
 end;
 
 end.

@@ -11,55 +11,33 @@ uses
 type
   TNeuralNet = class
   private
-    iLayers: SmallInt;
-    mLayer: array of TNeuronLayer;
+    m_iLayers:  integer;      { Layer List Length }
+    m_lLayers:  TNeuronLayer; { Layer List }
+
+    procedure
+    InitNetwork(inputs:   integer;
+                hidden:   integer;
+                outputs:  integer);
   public
-    constructor New(layers: SmallInt);
-
-    { Personally I hate C++-like Getters/Setters, 
-      But we are trying to access an array. 
-                                    - Jari         }
-    function
-    GetLayer(i: integer):   TNeuronLayer; stdcall;
-
-    destructor Destroy;
+    constructor
+    New(); overload;
   end;
 
 implementation
 
 constructor
-TNeuralNet.New(layers: SmallInt);
-var
-  i: Integer;
+TNeuralNet.New();
 begin
-  iLayers := layers;
-  SetLength(mLayer, iLayers);
-
-  for i := 0 to iLayers - 1 do
-  begin
-    WriteLn('Spawning Layer!');
-    mLayer[i] := TNeuronLayer.New;
-    mLayer[i].AppendNeuron(Neuron(0, 0, 0))
-  end;
+  m_iLayers := 0;
+  m_lLayers := nil;
 end;
 
-function
-TNeuralNet.GetLayer(i: integer):   TNeuronLayer; stdcall;
-begin
-    Result := mLayer[i];
-end;
 
-destructor
-TNeuralNet.Destroy;
-var
-  i: Integer;
+procedure
+TNeuralNet.InitNetwork( inputs:   integer;
+                        hidden:   integer;
+                        outputs:  integer);
 begin
-  for i := 0 to iLayers - 1 do
-  begin
-    WriteLn('Disposing Layer #', i);
-    mLayer[i].Destroy;
-  end;
-  inherited Destroy;
+ { @TODO }
 end;
-
 end.

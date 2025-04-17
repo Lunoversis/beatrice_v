@@ -1,4 +1,4 @@
-library beatrice_v.net.front;
+library beatrice_v.front.lib;
 
 {$macro on}    { Enabling Macros. }
 {$mode Delphi} { Enabling Delphi Syntax. }
