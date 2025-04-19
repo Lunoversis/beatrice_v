@@ -1,0 +1,36 @@
+name: Beatrice V CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Free Pascal Compiler (FPC)
+        run: |
+          sudo apt update
+          sudo apt install -y fp-compiler
+
+      - name: Compile Pascal project
+        run: |
+          fpc src/test.pas
+
+      - name: Run the compiled robot (optional)
+        run: |
+          ./test
+
+      - name: Notify Discord
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: "✅ Build succeeded for Beatrice V!"
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
