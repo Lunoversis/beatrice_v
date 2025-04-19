@@ -21,16 +21,58 @@ jobs:
           sudo apt install -y fp-compiler
 
       - name: Compile Pascal project
+        id: compile
         run: |
+          START=$(date +%s)
           fpc src/test.pas
+          END=$(date +%s)
+          echo "Time taken: $(($END - $START)) seconds"
+          echo "::set-output name=time::$(($END - $START)) seconds"
 
       - name: Run the compiled robot (optional)
         run: |
           ./src/test
 
-      - name: Notify Discord
+      - name: Notify Discord on Success
+        if: success()
         uses: Ilshidur/action-discord@0.3.2
         with:
-          args: "✅ Build succeeded for Beatrice V!"
+          args: |
+            **Build succeeded for Beatrice V!**
+
+            **Commit Information:**
+            - Commit: `${{ github.sha }}`
+            - Author: `${{ github.actor }}`
+            - Message: `${{ github.event.head_commit.message }}`
+
+            **Job Status:**
+            - Status: `✅ Success`
+            - Duration: `${{ steps.compile.outputs.time }}`
+            - Time: `${{ github.event.head_commit.timestamp }}`
+            
+            **Link to Logs**: [GitHub Actions Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Notify Discord on Failure
+        if: failure()
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: |
+            **Build failed for Beatrice V!**
+
+            **Commit Information:**
+            - Commit: `${{ github.sha }}`
+            - Author: `${{ github.actor }}`
+            - Message: `${{ github.event.head_commit.message }}`
+
+            **Job Status:**
+            - Status: `❌ Failure`
+            - Duration: `${{ steps.compile.outputs.time }}`
+            - Time: `${{ github.event.head_commit.timestamp }}`
+            
+            **Link to Logs**: [GitHub Actions Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
