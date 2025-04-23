@@ -1,6 +1,8 @@
 unit beatrice_v.net.network;
 
+{$IFDEF     FPC}
 {$mode Delphi}
+{$ENDIF}  { FPC }
 
 interface
 

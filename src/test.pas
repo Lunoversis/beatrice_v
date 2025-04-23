@@ -14,6 +14,7 @@ var
   robot:  TBeatriceRobot;
   net:    TNeuralNet;
 begin
+  writeln('test');
   writeln(Beatrice_Rand(700));
   writeln(Beatrice_Rand(2112));
   writeln(Beatrice_Rand(3004));

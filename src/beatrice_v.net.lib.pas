@@ -1,7 +1,9 @@
 library beatrice_v.net.lib;
 
 {$macro on}    { Enabling Macros. }
-{$mode Delphi} { Enabling Delphi Syntax. }
+{$IFDEF     FPC}
+{$mode Delphi}
+{$ENDIF}  { FPC }
 
 uses
   beatrice_v.net.layer,

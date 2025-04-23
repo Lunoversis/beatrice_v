@@ -2,7 +2,9 @@ unit beatrice_v.back.body;
 
 interface
 
+{$IFDEF     FPC}
 {$mode Delphi}
+{$ENDIF}  { FPC }
 
 type
   TEngine_Body = class

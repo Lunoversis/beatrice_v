@@ -2,7 +2,9 @@ unit beatrice_v.back.sensor;
 
 interface
 
+{$IFDEF     FPC}
 {$mode Delphi}
+{$ENDIF}  { FPC }
 
 uses
   beatrice_v.back.body;

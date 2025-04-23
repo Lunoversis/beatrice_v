@@ -1,4 +1,4 @@
-unit beatrice_v.math.vec2i;
+unit beatrice_v.math.vec2f;
 
 interface
 
@@ -6,34 +6,37 @@ interface
 {$mode Delphi}
 {$ENDIF}  { FPC }
 
+uses
+  beatrice_v.mgmt.fixed;
+
 type
-  TVec2i = class
+  TVec2f = class
   public
     { Variables }
-    X: integer;
-    Y: integer; 
+    X: f32_t;
+    Y: f32_t; 
 
     { Constructors }
     constructor
     New();            overload;
     constructor
-    New(ix:  integer;
-        iy:  integer); overload;
+    New(ix:  f32_t;
+        iy:  f32_t); overload;
 
   end;
 
 implementation
 
 constructor
-TVec2i.New();
+TVec2f.New();
 begin
   X := 0;
   Y := 0;
 end;
 
 constructor
-TVec2i.New( ix:  integer;
-            iy:  integer);
+TVec2f.New( ix:  f32_t;
+            iy:  f32_t);
 begin
   X := ix;
   Y := iy;
