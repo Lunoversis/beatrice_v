@@ -5,6 +5,9 @@
 unit beatrice_v.main;
 
 {$MACRO ON}
+{$IFDEF     FPC}
+{$mode Delphi}
+{$ENDIF}  { FPC }
 
 interface
 

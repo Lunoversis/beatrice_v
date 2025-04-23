@@ -2,7 +2,9 @@ unit beatrice_v.math.vec2i;
 
 interface
 
+{$IFDEF     FPC}
 {$mode Delphi}
+{$ENDIF}  { FPC }
 
 type
   TVec2i = class
@@ -33,8 +35,8 @@ constructor
 TVec2i.New( ix:  integer;
             iy:  integer);
 begin
-  X := x;
-  Y := y;
+  X := ix;
+  Y := iy;
 end;
 
 end.

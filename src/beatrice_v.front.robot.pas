@@ -2,7 +2,9 @@ unit beatrice_v.front.robot;
 
 interface
 
+{$IFDEF     FPC}
 {$mode Delphi}
+{$ENDIF}  { FPC }
 
 uses
   classes,
@@ -16,7 +18,7 @@ type
     m_sAngle: single;
     m_sPath:  single; { Delta S }
     m_sSpeed: single; { Delta V }
-    m_v2Pos:  TVec2i; { Current Position }
+    m_v2Size: TVec2i; { Current Position }
   end;
 
   TRobot = class(TEngine_Body)
@@ -52,7 +54,7 @@ type
   RobotPrototype( m_sAngle: single;
                   m_sPath:  single;
                   m_sSpeed: single;
-                  m_v2Pos:  TVec2i): TRobotPrototype; stdcall;
+                  m_v2Size: TVec2i): TRobotPrototype; stdcall;
 
 implementation
 
@@ -64,8 +66,8 @@ begin
   writeln('Created Robot! :: a',  m_pProto.m_sAngle,
           '| p',                  m_pProto.m_sPath,
           '| spd',                m_pProto.m_sSpeed,
-          '| pos x',              m_pProto.m_v2Pos.X, 
-          '| pos y',              m_pProto.m_v2Pos.Y);
+          '| sz x',               m_pProto.m_v2Size.X,
+          '| sz y',               m_pProto.m_v2Size.Y);
 end;
 
 constructor
@@ -103,15 +105,14 @@ function
 RobotPrototype( m_sAngle: single;
                 m_sPath:  single;
                 m_sSpeed: single;
-                m_v2Pos:  TVec2i): TRobotPrototype; stdcall;
+                m_v2Size: TVec2i): TRobotPrototype; stdcall;
 var
   x: TRobotPrototype;
 begin
   x.m_sAngle  := m_sAngle;
   x.m_sPath   := m_sPath;
   x.m_sSpeed  := m_sSpeed;
-  x.m_v2Pos   := m_v2Pos;
-
+  x.m_v2Size  := m_v2Size;
   Result      := x;
 end;
 
