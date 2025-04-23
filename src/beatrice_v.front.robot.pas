@@ -8,6 +8,7 @@ interface
 
 uses
   classes,
+  beatrice_v.ctrl.api,
   beatrice_v.back.body,
   Generics.Collections,
   beatrice_v.math.vec2f,
@@ -24,18 +25,26 @@ type
 
   TRobot = class(TEngine_Body)
   private
-    m_lSensor:  TList<TEngine_Sensor>;
-    m_pProto:   TRobotPrototype;
+    m_ctrlAPI:  TControlAPI;              { Control API}
+    m_lSensor:  TList<TEngine_Sensor>;    { List of Sensors Attached to Robot}
+    m_pProto:   TRobotPrototype;          { Prototype - Handles all basic values }
 
+    { Initializing Protocol }
     procedure
-    Init(proto: TRobotPrototype);
+    Init( api:    TControlAPI;
+          proto:  TRobotPrototype);
 
   public
     { Constructor }
     constructor
     New();                        overload;
     constructor
+    New(api:  TControlAPI);       overload;
+    constructor
     New(proto: TRobotPrototype);  overload;
+    constructor
+    New(api:  TControlAPI;
+        proto: TRobotPrototype);  overload;
 
     { Methods }
     procedure
@@ -60,7 +69,8 @@ type
 implementation
 
 procedure
-TRobot.Init(proto: TRobotPrototype);
+TRobot.Init(api:    TControlAPI;
+            proto:  TRobotPrototype);
 begin
   m_lSensor := TList<TEngine_Sensor>.Create;
   m_pProto  := proto;
@@ -74,13 +84,27 @@ end;
 constructor
 TRobot.New(proto: TRobotPrototype);
 begin
-  Init(proto);
+  Init(TControlAPI.New(), proto);
+end;
+
+
+constructor
+TRobot.New( api:  TControlAPI;
+            proto: TRobotPrototype);
+begin
+  Init(api, proto);
+end;
+
+constructor 
+TRobot.New(api:  TControlAPI);
+begin
+  Init(api, RobotPrototype(0, 0, 0, TVec2f.New()));
 end;
 
 constructor 
 TRobot.New();
 begin
-  Init(RobotPrototype(0, 0, 0, TVec2f.New()));
+  Init(TControlAPI.New(), RobotPrototype(0, 0, 0, TVec2f.New()));
 end;
 
 procedure 
