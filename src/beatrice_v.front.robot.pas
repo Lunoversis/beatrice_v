@@ -10,15 +10,16 @@ uses
   classes,
   beatrice_v.back.body,
   Generics.Collections,
-  beatrice_v.math.vec2i,
+  beatrice_v.math.vec2f,
+  beatrice_v.mgmt.fixed,
   beatrice_v.back.sensor;
 
 type
   TRobotPrototype = record
-    m_sAngle: single;
-    m_sPath:  single; { Delta S }
-    m_sSpeed: single; { Delta V }
-    m_v2Size: TVec2i; { Current Position }
+    m_sAngle: f32_t;
+    m_sPath:  f32_t;  { Delta S }
+    m_sSpeed: f32_t;  { Delta V }
+    m_v2Size: TVec2f; { Current Position }
   end;
 
   TRobot = class(TEngine_Body)
@@ -32,7 +33,7 @@ type
   public
     { Constructor }
     constructor
-    New();                    overload;
+    New();                        overload;
     constructor
     New(proto: TRobotPrototype);  overload;
 
@@ -51,10 +52,10 @@ type
 
   { Prototype Generator }
   function
-  RobotPrototype( m_sAngle: single;
-                  m_sPath:  single;
-                  m_sSpeed: single;
-                  m_v2Size: TVec2i): TRobotPrototype; stdcall;
+  RobotPrototype( m_sAngle: f32_t;
+                  m_sPath:  f32_t;
+                  m_sSpeed: f32_t;
+                  m_v2Size: TVec2f): TRobotPrototype; stdcall;
 
 implementation
 
@@ -63,9 +64,9 @@ TRobot.Init(proto: TRobotPrototype);
 begin
   m_lSensor := TList<TEngine_Sensor>.Create;
   m_pProto  := proto;
-  writeln('Created Robot! :: a',  m_pProto.m_sAngle,
-          '| p',                  m_pProto.m_sPath,
-          '| spd',                m_pProto.m_sSpeed,
+  writeln('Created Robot! :: a',  FX_TO_F(m_pProto.m_sAngle),
+          '| p',                  FX_TO_F(m_pProto.m_sPath),
+          '| spd',                FX_TO_F(m_pProto.m_sSpeed),
           '| sz x',               m_pProto.m_v2Size.X,
           '| sz y',               m_pProto.m_v2Size.Y);
 end;
@@ -79,7 +80,7 @@ end;
 constructor 
 TRobot.New();
 begin
-  Init(RobotPrototype(0, 0, 0, TVec2i.New()));
+  Init(RobotPrototype(0, 0, 0, TVec2f.New()));
 end;
 
 procedure 
@@ -102,10 +103,10 @@ begin
 end;
 
 function
-RobotPrototype( m_sAngle: single;
-                m_sPath:  single;
-                m_sSpeed: single;
-                m_v2Size: TVec2i): TRobotPrototype; stdcall;
+RobotPrototype( m_sAngle: f32_t;
+                m_sPath:  f32_t;
+                m_sSpeed: f32_t;
+                m_v2Size: TVec2f): TRobotPrototype; stdcall;
 var
   x: TRobotPrototype;
 begin
