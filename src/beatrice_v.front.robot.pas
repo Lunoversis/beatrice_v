@@ -8,12 +8,12 @@ interface
 
 uses
   beatrice_v.back.body,
-  beatrice_v.back.sensor;
-  beatrice_v.ctrl.template,
+  beatrice_v.back.sensor,
+  beatrice_v.api.template,
   beatrice_v.math.vec2f,
   beatrice_v.mgmt.fixed,
   classes,
-  Generics.Collections,
+  Generics.Collections;
 
 type
   TRobotPrototype = record

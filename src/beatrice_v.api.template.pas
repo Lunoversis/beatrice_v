@@ -1,4 +1,4 @@
-unit beatrice_v.ctrl.template;
+unit beatrice_v.api.template;
     
 interface
 
