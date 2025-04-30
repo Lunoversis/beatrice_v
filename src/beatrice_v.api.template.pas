@@ -1,4 +1,4 @@
-unit beatrice_v.ctrl.api;
+unit beatrice_v.ctrl.template;
     
 interface
 
@@ -8,7 +8,8 @@ interface
 {$ENDIF}  { FPC }
 
 uses
-    SysUtils, Classes;
+    Classes,
+    SysUtils;
 
 type
     TControlAPI_Metadata  = record

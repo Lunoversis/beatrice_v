@@ -7,13 +7,13 @@ interface
 {$ENDIF}  { FPC }
 
 uses
-  classes,
-  beatrice_v.ctrl.api,
   beatrice_v.back.body,
-  Generics.Collections,
+  beatrice_v.back.sensor;
+  beatrice_v.ctrl.template,
   beatrice_v.math.vec2f,
   beatrice_v.mgmt.fixed,
-  beatrice_v.back.sensor;
+  classes,
+  Generics.Collections,
 
 type
   TRobotPrototype = record
