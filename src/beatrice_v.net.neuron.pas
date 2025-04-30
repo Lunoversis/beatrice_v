@@ -7,8 +7,8 @@ unit beatrice_v.net.neuron;
 interface
 
 uses
-  Classes,
-  beatrice_v.math.rand;
+  beatrice_v.math.rand,
+  Classes;
 
 type
   TSingleArray  = array of Single;
