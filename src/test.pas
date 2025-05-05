@@ -5,6 +5,7 @@ uses
   beatrice_v.net.layer,
   beatrice_v.net.neuron,
   beatrice_v.net.network,
+  beatrice_v.front.path,
   beatrice_v.front.robot,
   beatrice_v.back.body,
   beatrice_v.math.rand,

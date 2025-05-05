@@ -51,5 +51,5 @@ Credits
 -------
 
 [jari.nxt](https://GitHub.com/1jari) - Project Designer, programmer.
-
+[hunter](https://GitHub.com/hunter2112) - Project Designer, programmer.
 
