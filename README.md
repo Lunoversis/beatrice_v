@@ -35,8 +35,8 @@ Progress
 
 - [x]   Basic modular back-end architecture.
 - [ ]    Full optimized mathematics module.
-- [ ]    Ev3Dev support.
-- [ ]    Working artificial neural network.
+- [ ]    Ev3Dev support.a
+- [x]    Working artificial neural network.
 - [ ]    Functional-Programming support
 - [ ]    Aurora V support.
 - [ ]    ROS support
@@ -49,12 +49,6 @@ MIT - Check [LICENSE](./LICENSE)
 
 Credits
 -------
-
-<<<<<<< HEAD
 [jari.nxt](https://github.com/1jari) - Project Designer, programmer.
 [hunter2112](https://github.com/hunter2112) - programmer.
-=======
-[jari.nxt](https://GitHub.com/1jari) - Project Designer, programmer.
-[hunter](https://GitHub.com/hunter2112) - Project Designer, programmer.
->>>>>>> 240f6bebe34774eb65e2b2b11a52a089f6046f81
 
