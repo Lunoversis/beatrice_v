@@ -50,6 +50,6 @@ MIT - Check [LICENSE](./LICENSE)
 Credits
 -------
 
-[jari.nxt](https://GitHub.com/1jari) - Project Designer, programmer.
-
+[jari.nxt](https://github.com/1jari) - Project Designer, programmer.
+[hunter2112](https://github.com/hunter2112) - programmer.
 
