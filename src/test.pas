@@ -1,26 +1,23 @@
 program test;
 
 uses
-  beatrice_v.robot,
-  beatrice_v.net.layer,
-  beatrice_v.net.neuron,
-  beatrice_v.net.network,
+  beatrice_v.back.body,
+  beatrice_v.back.sensor,
   beatrice_v.front.path,
   beatrice_v.front.robot,
-  beatrice_v.back.body,
   beatrice_v.math.rand,
-  beatrice_v.back.sensor;
+  beatrice_v.perceptron,
+  beatrice_v.robot;
 
 var
   robot:  TBeatriceRobot;
-  net:    TNeuralNet;
+  ai:     TPerceptron;
 begin
+  ai  :=  TPerceptron.New(0.0, 0.0, 0.1);
   writeln('test');
   writeln(Beatrice_Rand(700));
   writeln(Beatrice_Rand(2112));
   writeln(Beatrice_Rand(3004));
-  net := TNeuralNet.New();
   robot := TBeatriceRobot.New();
   robot.Destroy();
-  net.Destroy();
 end.
