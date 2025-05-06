@@ -6,16 +6,13 @@ interface
 {$mode Delphi}
 {$ENDIF}  { FPC }
 uses
-  Classes,
   beatrice_v.back.body,
   beatrice_v.back.sensor,
   beatrice_v.front.robot,
   beatrice_v.math.rand,
   beatrice_v.mgmt.fixed,
   beatrice_v.math.vec2f,
-  beatrice_v.net.layer,
-  beatrice_v.net.neuron,
-  beatrice_v.net.network,
+  Classes,
   Generics.Collections;
 
 type
